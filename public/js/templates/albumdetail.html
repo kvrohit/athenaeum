@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="span4" style="text-align: center; margin-top: 12px">
+      <img src="{{ imgurl }}" width="300" height="300" class="img-polaroid">
+    </div>
+    <div class="span8">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>--- Tracks ---</td>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each tracks}}
+            <tr>
+              <td><i class="icon-play" style="cursor: pointer"></i>&nbsp;<a href="{{ this.uri }}">{{ this.title }}</a></td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</container>

@@ -1,0 +1,13 @@
+<a href="#" class="mosaic-overlay">
+  <div class="details">
+    <h4>{{ title }}</h4>
+    <ul>
+      {{#each tracks}}
+      <li>{{this.title}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</a>
+<div class="mosaic-backdrop">
+  <img src="{{ imgurl }}" alt="{{ title }}" />
+</div>

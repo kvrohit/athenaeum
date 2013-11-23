@@ -1,0 +1,89 @@
+body {
+  font-family: 'Source Sans Pro', 'Ubuntu', sans-serif;
+  background-color: #f9f9f9;
+}
+/* Generic pane styles */
+.mrow,
+.mcol {
+  overflow: hidden;
+  position: absolute;
+}
+.mrow {
+  left: 0;
+  right: 0;
+}
+.mcol {
+  top: 0;
+  bottom: 0;
+}
+.scroll-x {
+  overflow-x: auto;
+}
+.scroll-y {
+  overflow-y: auto;
+}
+/* App specific styles */
+.header.mrow {
+  height: 43px;
+  top: 0;
+}
+.body.mrow {
+  top: 43px;
+  bottom: 0;
+}
+.navbar .brand {
+  margin-left: 0;
+}
+.navbar-search {
+  margin-right: 20px;
+}
+.navbar-search .search-query {
+  line-height: 2;
+}
+.mosaic-block {
+  position: relative;
+  float: left;
+  width: 160px;
+  height: 230px;
+  overflow: hidden;
+  margin: 10px;
+}
+.mosaic-block a {
+  text-decoration: none;
+}
+.mosaic-block .mosaic-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/bg-black.png");
+  opacity: 0;
+  -moz-opacity: 0;
+  -o-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  z-index: 5;
+}
+.mosaic-block .mosaic-overlay:hover {
+  opacity: 1;
+  -moz-opacity: 1;
+  -o-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+}
+.mosaic-block .mosaic-overlay .details {
+  font-size: 90%;
+  color: #fff;
+  padding: 10px;
+}
+.mosaic-block .mosaic-overlay .details p {
+  line-height: 15px;
+}
+.mosaic-block .mosaic-backdrop {
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+.mosaic-block .mosaic-backdrop img {
+  width: 100%;
+  height: 100%;
+}
