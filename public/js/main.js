@@ -10,7 +10,9 @@ require.config({
 
 require(['jquery', 'underscore', 'backbone', 'router'], function($, _, Backbone, Router) {
   $(function() {
-    var router = new Router();
+    var router    = new Router();
+    window.player = new Audio();
+    window.timer  = null;
 
     $('ul.nav li a').on('click', function() {
       $('ul.nav li').removeClass('active');
@@ -21,6 +23,19 @@ require(['jquery', 'underscore', 'backbone', 'router'], function($, _, Backbone,
       e.preventDefault();
       var href = $(this).attr('href');
       router.navigate(href, { trigger: true });
+    });
+
+    $('#controlBtn').on('click', function(e) {
+      e.preventDefault();
+      $i = $('#controlBtn i');
+
+      if (window.player.paused) {
+        window.player.play();
+        $i.attr('class', 'icon-pause');
+      } else {
+        window.player.pause();
+        $i.attr('class', 'icon-play');
+      }
     });
 
     Backbone.history.start({ pushState: true });

@@ -16,21 +16,80 @@ exports.tvshows = function(req, res) {
 };
 
 exports.albums = function(req, res) {
+
+  if (req.params.id) {
+    if (req.params.id === '1') {
+      res.json({
+        "id": 1,
+        "title": "Paranoid",
+        "imgurl": "http://localhost:4000/black sabbath - paranoid/cover.jpg",
+        "type_id": 3,
+        "tracks": [
+          { "uri": "http://localhost:4000/black sabbath - paranoid/01 - black sabbath - war pigs.mp3", "title": "War Pigs" },
+          { "uri": "http://localhost:4000/black sabbath - paranoid/02 - black sabbath - paranoid.mp3", "title": "Paranoid" },
+          { "uri": "http://localhost:4000/black sabbath - paranoid/03 - black sabbath - planet caravan.mp3", "title": "Planet Caravan" },
+          { "uri": "http://localhost:4000/black sabbath - paranoid/04 - black sabbath - iron man.mp3", "title": "Iron Man" },
+          { "uri": "http://localhost:4000/black sabbath - paranoid/05 - black sabbath - electric funeral.mp3", "title": "Electric Funeral" },
+          { "uri": "http://localhost:4000/black sabbath - paranoid/06 - black sabbath - hand of doom.mp3", "title": "Hand of Doom" },
+          { "uri": "http://localhost:4000/black sabbath - paranoid/07 - black sabbath - rat salad.mp3", "title": "Rat Salad" },
+          { "uri": "http://localhost:4000/black sabbath - paranoid/08 - black sabbath - fairies wear boots.mp3", "title": "Fairies Wear Boots" }
+        ]
+      });
+    } else {
+      res.json({
+        "id": 2,
+        "title": "Rapid Eye Movement",
+        "imgurl": "http://localhost:4000/riverside - rapid eye movement/cover.jpg",
+        "type_id": 3,
+        "tracks": [
+          { "uri": "http://localhost:4000/riverside - rapid eye movement/01 - riverside - beyond the eyelids.mp3", "title": "Beyond the Eyelids" },
+          { "uri": "http://localhost:4000/riverside - rapid eye movement/02 - riverside - rainbow box.mp3", "title": "Rainbow Box" },
+          { "uri": "http://localhost:4000/riverside - rapid eye movement/03 - riverside - 02 panic room.mp3", "title": "02 Panic Room" },
+          { "uri": "http://localhost:4000/riverside - rapid eye movement/04 - riverside - schizophrenic prayer.mp3", "title": "Schizophrenic Prayer" },
+          { "uri": "http://localhost:4000/riverside - rapid eye movement/05 - riverside - parasomnia.mp3", "title": "Parasomnia" },
+          { "uri": "http://localhost:4000/riverside - rapid eye movement/06 - riverside - through the other side.mp3", "title": "Through the Other Side" },
+          { "uri": "http://localhost:4000/riverside - rapid eye movement/07 - riverside - embryonic.mp3", "title": "Embryonic" },
+          { "uri": "http://localhost:4000/riverside - rapid eye movement/08 - riverside - cybernetic pillow.mp3", "title": "Cybernetic Pillow" },
+          { "uri": "http://localhost:4000/riverside - rapid eye movement/09 - riverside - ultimate trip.mp3", "title": "Ultimate Trip" }
+        ]
+      });
+    }
+
+    return;
+  }
+
   res.json([
     {
       "id": 1,
       "title": "Paranoid",
-      "imgurl": "/paranoid/cover.jpg",
+      "imgurl": "http://localhost:4000/black sabbath - paranoid/cover.jpg",
       "type_id": 3,
       "tracks": [
-        { "uri": "/paranoid/01 - black sabbath - war pigs.mp3", "title": "War Pigs" },
-        { "uri": "/paranoid/02 - black sabbath - paranoid.mp3", "title": "Paranoid" },
-        { "uri": "/paranoid/03 - black sabbath - planet caravan.mp3", "title": "Planet Caravan" },
-        { "uri": "/paranoid/04 - black sabbath - iron man.mp3", "title": "Iron Man" },
-        { "uri": "/paranoid/05 - black sabbath - electric funeral.mp3", "title": "Electric Funeral" },
-        { "uri": "/paranoid/06 - black sabbath - hand of doom.mp3", "title": "Hand of Doom" },
-        { "uri": "/paranoid/07 - black sabbath - rat salad.mp3", "title": "Rat Salad" },
-        { "uri": "/paranoid/08 - black sabbath - fairies wear boots.mp3", "title": "Fairies Wear Boots" }
+        { "uri": "http://localhost:4000/black sabbath - paranoid/01 - black sabbath - war pigs.mp3", "title": "War Pigs" },
+        { "uri": "http://localhost:4000/black sabbath - paranoid/02 - black sabbath - paranoid.mp3", "title": "Paranoid" },
+        { "uri": "http://localhost:4000/black sabbath - paranoid/03 - black sabbath - planet caravan.mp3", "title": "Planet Caravan" },
+        { "uri": "http://localhost:4000/black sabbath - paranoid/04 - black sabbath - iron man.mp3", "title": "Iron Man" },
+        { "uri": "http://localhost:4000/black sabbath - paranoid/05 - black sabbath - electric funeral.mp3", "title": "Electric Funeral" },
+        { "uri": "http://localhost:4000/black sabbath - paranoid/06 - black sabbath - hand of doom.mp3", "title": "Hand of Doom" },
+        { "uri": "http://localhost:4000/black sabbath - paranoid/07 - black sabbath - rat salad.mp3", "title": "Rat Salad" },
+        { "uri": "http://localhost:4000/black sabbath - paranoid/08 - black sabbath - fairies wear boots.mp3", "title": "Fairies Wear Boots" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Rapid Eye Movement",
+      "imgurl": "http://localhost:4000/riverside - rapid eye movement/cover.jpg",
+      "type_id": 3,
+      "tracks": [
+        { "uri": "http://localhost:4000/riverside - rapid eye movement/01 - riverside - beyond the eyelids.mp3", "title": "Beyond the Eyelids" },
+        { "uri": "http://localhost:4000/riverside - rapid eye movement/02 - riverside - rainbow box.mp3", "title": "Rainbow Box" },
+        { "uri": "http://localhost:4000/riverside - rapid eye movement/03 - riverside - 02 panic room.mp3", "title": "02 Panic Room" },
+        { "uri": "http://localhost:4000/riverside - rapid eye movement/04 - riverside - schizophrenic prayer.mp3", "title": "Schizophrenic Prayer" },
+        { "uri": "http://localhost:4000/riverside - rapid eye movement/05 - riverside - parasomnia.mp3", "title": "Parasomnia" },
+        { "uri": "http://localhost:4000/riverside - rapid eye movement/06 - riverside - through the other side.mp3", "title": "Through the Other Side" },
+        { "uri": "http://localhost:4000/riverside - rapid eye movement/07 - riverside - embryonic.mp3", "title": "Embryonic" },
+        { "uri": "http://localhost:4000/riverside - rapid eye movement/08 - riverside - cybernetic pillow.mp3", "title": "Cybernetic Pillow" },
+        { "uri": "http://localhost:4000/riverside - rapid eye movement/09 - riverside - ultimate trip.mp3", "title": "Ultimate Trip" }
       ]
     }
   ]);

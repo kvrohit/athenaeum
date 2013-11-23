@@ -13,7 +13,9 @@
         <tbody>
           {{#each tracks}}
             <tr>
-              <td><i class="icon-play" style="cursor: pointer"></i>&nbsp;<a href="{{ this.uri }}">{{ this.title }}</a></td>
+              <td>
+                <i class="icon-play" style="cursor: pointer" data-track-index="{{@index}}"></i>&nbsp;
+                <a href="{{ this.uri }}">{{ this.title }}</a></td>
             </tr>
           {{/each}}
         </tbody>

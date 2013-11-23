@@ -12,12 +12,34 @@ define(
 
       open: function(evt) {
         evt.preventDefault();
-        console.log(this.model);
-        console.log(this.model.attributes[0].songs);
+        var trackIndex = $(evt.srcElement).data('track-index');
+        var trackUrl   = this.model.trackUrlAtIndex(trackIndex);
+        console.log(trackUrl);
+
+        window.player.src = undefined;
+        window.player.src = trackUrl;
+        clearInterval(window.timer);
+
+        var $slider = $('#slider');
+        $slider.attr('min', 0);
+
+        window.player.addEventListener('loadedmetadata', function() {
+          $slider.attr('max', window.player.duration);
+          console.log(window.player.duration);
+
+          window.timer = setInterval(function() {
+            $slider.attr('value', window.player.currentTime);
+          }, 1000);
+
+          window.player.play();
+
+          $('#controlBtn i').attr('class', 'icon-pause');
+        });
+
       },
 
       render: function() {
-        var content = this.template(this.model.toJSON()[0]);
+        var content = this.template(this.model.toJSON());
         this.$el.html(content);
         return this;
       }
