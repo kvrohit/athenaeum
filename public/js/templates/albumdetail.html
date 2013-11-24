@@ -4,7 +4,7 @@
       <img src="{{ imgurl }}" width="300" height="300" class="img-polaroid">
     </div>
     <div class="span8">
-      <table class="table">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th></th>
@@ -18,7 +18,7 @@
                 <i class="icon-plus-sign" title="Queue track" style="cursor: pointer" data-track-index="{{@index}}"></i>
               </td>
               <td>
-                <a href="{{ this.uri }}">{{ this.title }}</a>
+                <a href="{{ this.uri }}" data-track-index="{{@index}}">{{ this.title }}</a>
               </td>
             </tr>
           {{/each}}
