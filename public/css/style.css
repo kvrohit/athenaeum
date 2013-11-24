@@ -40,6 +40,10 @@ body {
 .navbar-search .search-query {
   line-height: 2;
 }
+.alt-size {
+  width: 190px !important;
+  height: 190px !important;
+}
 .mosaic-block {
   position: relative;
   float: left;

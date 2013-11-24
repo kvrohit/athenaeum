@@ -1,6 +1,6 @@
 define(
-  ['jquery', 'underscore', 'backbone', 'text!templates/albumdetail.html'],
-  function($, _, Backbone, AlbumDetailTemplate) {
+  ['jquery', 'underscore', 'backbone', 'text!templates/albumdetail.html', 'models/track'],
+  function($, _, Backbone, AlbumDetailTemplate, Track) {
     var AlbumDetail = Backbone.View.extend({
       // className: 'mosaic-block',
       template: Handlebars.compile(AlbumDetailTemplate),
@@ -16,26 +16,10 @@ define(
         var trackUrl   = this.model.trackUrlAtIndex(trackIndex);
         console.log(trackUrl);
 
-        window.player.src = undefined;
-        window.player.src = trackUrl;
-        clearInterval(window.timer);
+        window.Player.stop();
+        window.Player.src(trackUrl);
 
-        var $slider = $('#slider');
-        $slider.attr('min', 0);
-
-        window.player.addEventListener('loadedmetadata', function() {
-          $slider.attr('max', window.player.duration);
-          console.log(window.player.duration);
-
-          window.timer = setInterval(function() {
-            $slider.attr('value', window.player.currentTime);
-          }, 1000);
-
-          window.player.play();
-
-          $('#controlBtn i').attr('class', 'icon-pause');
-        });
-
+        window.playlist.add(new Track(this.model.trackAtIndex(trackIndex)), {merge: true});
       },
 
       render: function() {

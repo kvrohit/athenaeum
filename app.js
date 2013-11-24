@@ -7,8 +7,9 @@ var express = require('express'),
     routes  = require('./routes'),
     user    = require('./routes/user'),
     http    = require('http'),
-    path    = require('path'),
-    app     = express();
+    path    = require('path');
+
+app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -21,6 +22,7 @@ app.configure(function(){
   app.use(app.router);
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static('/home/rohit/Music'));
 });
 
 app.configure('development', function(){
@@ -32,7 +34,7 @@ app.get('/users'     , user.list);
 app.get('/movies'    , routes.movies);
 app.get('/tvshows'   , routes.tvshows);
 app.get('/albums'    , routes.albums);
-app.get('/albums/:id', routes.albums);
+app.get('/albums/:id', routes.onealbum);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

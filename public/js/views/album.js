@@ -2,7 +2,7 @@ define(
   ['jquery', 'underscore', 'backbone', 'text!templates/albumview.html'],
   function($, _, Backbone, AlbumTemplate) {
     var AlbumView = Backbone.View.extend({
-      className: 'mosaic-block',
+      className: 'mosaic-block alt-size',
       template: Handlebars.compile(AlbumTemplate),
 
       events: {

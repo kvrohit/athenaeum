@@ -6,7 +6,12 @@ define(
 
       trackUrlAtIndex: function(index) {
         return this.get('tracks')[index].uri;
+      },
+
+      trackAtIndex: function(index) {
+        return this.get('tracks')[index];
       }
+
     });
 
     return Album;
