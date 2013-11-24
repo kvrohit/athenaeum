@@ -16,10 +16,7 @@ define(
         var trackUrl   = this.model.trackUrlAtIndex(trackIndex);
         console.log(trackUrl);
 
-        window.Player.stop();
-        window.Player.src(trackUrl);
-
-        window.playlist.add(new Track(this.model.trackAtIndex(trackIndex)), {merge: true});
+        window.Player.queueTrack(new Track(this.model.trackAtIndex(trackIndex)));
       },
 
       render: function() {

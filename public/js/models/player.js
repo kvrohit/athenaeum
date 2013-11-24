@@ -1,6 +1,6 @@
 define(
-  ['underscore', 'backbone'],
-  function(_, Backbone) {
+  ['underscore', 'backbone', 'models/track', 'collections/playlist'],
+  function(_, Backbone, Track, Playlist) {
     Player = Backbone.Model.extend({
       player: undefined,
       timer: undefined,
@@ -9,11 +9,14 @@ define(
         "state": "stopped",
         "src": undefined,
         "duration": 0,
-        "currentPos": 0
+        "currentPos": 0,
+        "currentIndex": -1
       },
 
       initialize: function() {
-        this.player = new Audio();
+        this.player   = new Audio();
+        this.playlist = new Playlist();
+
         _.bindAll(this, 'play', 'playPause');
         this.on("change:src", this.play);
       },
@@ -54,11 +57,49 @@ define(
         clearInterval(this.timer);
       },
 
+      next: function() {
+        var curIndex = this.get('currentIndex');
+        curIndex += 1;
+
+        if (curIndex === this.playlist.length) {
+          return;
+        }
+
+        this.set({currentIndex: curIndex});
+        this.src(this.playlist.at(curIndex).get('uri'));
+      },
+
+      previous: function() {
+        var curIndex = this.get('currentIndex');
+
+        if (curIndex === -1) {
+          return;
+        }
+
+        curIndex -= 1;
+
+        if (curIndex === -1) {
+          return;
+        }
+
+        this.set({currentIndex: curIndex});
+        this.src(this.playlist.at(curIndex).get('uri'));
+      },
+
       tick: function() {
         this.set({currentPos: this.player.currentTime});
 
         if (this.player.ended) {
           this.stop();
+          this.next();
+        }
+      },
+
+      queueTrack: function(track) {
+        this.playlist.add(track);
+
+        if (this.get('currentIndex') === -1) {
+          this.next();
         }
       }
 

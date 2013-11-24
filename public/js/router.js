@@ -11,11 +11,10 @@ define(
     'models/album',
     'views/albumdetail',
     'views/player',
-    'models/player',
-    'collections/playlist'
+    'models/player'
   ],
 
-  function($, _, Backbone, Movies, TVShows, Albums, ItemsView, AlbumsView, Album, AlbumDetail, PlayerView, Player, Playlist) {
+  function($, _, Backbone, Movies, TVShows, Albums, ItemsView, AlbumsView, Album, AlbumDetail, PlayerView, Player) {
     var Router = Backbone.Router.extend({
       routes: {
         ""            : "index",
@@ -39,10 +38,9 @@ define(
         });
 
         window.Player = new Player();
-        window.playlist = new Playlist();
 
         var playerView = new PlayerView({ model: window.Player });
-        $('form.navbar-form.pull-right').append(playerView.render().el);
+        $('form.navbar-form.pull-right').prepend(playerView.render().el);
       },
 
       cleanUp: function() {

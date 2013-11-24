@@ -6,11 +6,13 @@ define(
       template: Handlebars.compile(PlayerTemplate),
 
       events: {
-        "click a": "playPause"
+        "click #controlBtn": "playPause",
+        "click #btnNext": "next",
+        "click #btnPrevious": "previous"
       },
 
       initialize: function() {
-        _.bindAll(this, 'render', 'updateControls', 'setDuration', 'setCurrentPos', 'playPause');
+        _.bindAll(this, 'render', 'updateControls', 'setDuration', 'setCurrentPos', 'playPause', 'next', 'previous');
         this.model.on("change:state", this.updateControls);
         this.model.on("change:duration", this.setDuration);
         this.model.on("change:currentPos", this.setCurrentPos);
@@ -39,9 +41,17 @@ define(
       playPause: function() {
         if (this.model.get('state') === 'playing') {
           this.model.pause();
-        } else {
+        } else if (this.model.get('state') === 'paused') {
           this.model.play();
         }
+      },
+
+      next: function() {
+        this.model.next();
+      },
+
+      previous: function() {
+        this.model.previous();
       },
 
       render: function() {
