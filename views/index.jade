@@ -5,16 +5,18 @@ block scripts
   script(src='/js/libs/require/require.js', data-main='/js/main')
 
 block navigation
-  .navbar.navbar-fixed-top.header.mrow
-    .navbar-inner
-        a.brand(href="/") Athenaeum
-        ul.nav
+  nav.navbar.navbar-default.navbar-fixed-top.header.mrow(role="navigation")
+    .navbar-header
+      a.navbar-brand(href="/") Athenaeum
+    .collapse.navbar-collapse
+        ul.nav.navbar-nav
           li.active: a(href="movies") Movies
           li: a(href="tvshows") TV Shows
           li: a(href="albums") Music
-        form.navbar-form.pull-right
-          input#search.search-query(type="text", placeholder="Search")
-          &nbsp;&nbsp;&nbsp;
+        form.navbar-form.navbar-left
+          input#search.form-control(type="text", placeholder="Search")
+        form#seekbar.navbar-form.navbar-right.seekbar
+        div#controls.navbar-right.btn-group
 
 block content
   .body.mrow.scroll-y

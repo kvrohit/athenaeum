@@ -42,8 +42,8 @@ define(
 
         var playerView = new PlayerView({ model: window.Player });
         var seekbar = new Seekbar({ model: window.Player });
-        $('form.navbar-form.pull-right').prepend(seekbar.render().el);
-        $('form.navbar-form.pull-right').prepend(playerView.render().el);
+        $('#seekbar').html(seekbar.render().el);
+        $('#controls').html(playerView.render().el);
       },
 
       cleanUp: function() {

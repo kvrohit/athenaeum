@@ -4,6 +4,7 @@ define(
     var PlayerView = Backbone.View.extend({
       tagName: 'span',
       template: Handlebars.compile(PlayerTemplate),
+      ctrlBtn: null,
 
       events: {
         "click #controlBtn": "playPause",
@@ -20,9 +21,11 @@ define(
         console.log('in updateControls');
 
         if (this.model.get('state') === 'playing') {
-          this.$('#controlBtn i').attr('class', 'icon-pause');
+          this.ctrlBtn.removeClass('glyphicon-play');
+          this.ctrlBtn.addClass('glyphicon-pause');
         } else {
-          this.$('#controlBtn i').attr('class', 'icon-play');
+          this.ctrlBtn.removeClass('glyphicon-pause');
+          this.ctrlBtn.addClass('glyphicon-play');
         }
 
       },
@@ -46,6 +49,7 @@ define(
       render: function() {
         var content = this.template(this.model.toJSON());
         this.$el.html(content);
+        this.ctrlBtn = this.$('#controlBtn span');
         return this;
       }
     });
