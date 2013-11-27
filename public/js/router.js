@@ -11,10 +11,11 @@ define(
     'models/album',
     'views/albumdetail',
     'views/player',
-    'models/player'
+    'models/player',
+    'views/seekbar'
   ],
 
-  function($, _, Backbone, Movies, TVShows, Albums, ItemsView, AlbumsView, Album, AlbumDetail, PlayerView, Player) {
+  function($, _, Backbone, Movies, TVShows, Albums, ItemsView, AlbumsView, Album, AlbumDetail, PlayerView, Player, Seekbar) {
     var Router = Backbone.Router.extend({
       routes: {
         ""            : "index",
@@ -40,6 +41,8 @@ define(
         window.Player = new Player();
 
         var playerView = new PlayerView({ model: window.Player });
+        var seekbar = new Seekbar({ model: window.Player });
+        $('form.navbar-form.pull-right').prepend(seekbar.render().el);
         $('form.navbar-form.pull-right').prepend(playerView.render().el);
       },
 

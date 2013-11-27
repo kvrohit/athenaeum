@@ -12,10 +12,8 @@ define(
       },
 
       initialize: function() {
-        _.bindAll(this, 'render', 'updateControls', 'setDuration', 'setCurrentPos', 'playPause', 'next', 'previous');
+        _.bindAll(this, 'render', 'updateControls', 'playPause', 'next', 'previous');
         this.model.on("change:state", this.updateControls);
-        this.model.on("change:duration", this.setDuration);
-        this.model.on("change:currentPos", this.setCurrentPos);
       },
 
       updateControls: function() {
@@ -27,15 +25,6 @@ define(
           this.$('#controlBtn i').attr('class', 'icon-play');
         }
 
-      },
-
-      setDuration: function() {
-        console.log('in setDuration');
-        this.$('#slider').attr('max', this.model.get('duration'));
-      },
-
-      setCurrentPos: function() {
-        this.$('#slider').attr('value', this.model.get('currentPos'));
       },
 
       playPause: function() {

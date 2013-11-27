@@ -16,8 +16,6 @@ define(
       initialize: function() {
         this.player   = new Audio();
         this.playlist = new Playlist();
-
-        _.bindAll(this, 'play', 'playPause');
         this.on("change:src", this.play);
       },
 
