@@ -2,6 +2,8 @@ extends layout
 
 block scripts
   script(src='/js/libs/handlebars/handlebars.js')
+  script(src='/js/libs/jquery/jquery.min.js')
+  script(src='/js/libs/bootstrap/bootstrap.min.js')
   script(src='/js/libs/require/require.js', data-main='/js/main')
 
 block navigation
@@ -9,12 +11,16 @@ block navigation
     .navbar-header
       a.navbar-brand(href="/") Athenaeum
     .collapse.navbar-collapse
-        ul.nav.navbar-nav
+        ul.nav.navbar-nav#routes
           li.active: a(href="movies") Movies
           li: a(href="tvshows") TV Shows
           li: a(href="albums") Music
         form.navbar-form.navbar-left
           input#search.form-control(type="text", placeholder="Search")
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown#dropdown
+            a(href="#", class="dropdown-toggle", data-toggle="dropdown") Playlist&nbsp;
+              b.caret
         form#seekbar.navbar-form.navbar-right.seekbar
         div#controls.navbar-right.btn-group
 

@@ -12,7 +12,7 @@ define(
 
       open: function(evt) {
         evt.preventDefault();
-        var trackIndex = $(evt.srcElement).data('track-index');
+        var trackIndex = $(evt.target).data('track-index');
         var trackUrl   = this.model.trackUrlAtIndex(trackIndex);
         console.log(trackUrl);
 

@@ -3,7 +3,7 @@ body
   background-color #f9f9f9
 
 /* Generic pane styles */
-.mrow, .mcol { overflow: hidden; position: absolute; }
+.mrow, .mcol { /*overflow: hidden;*/ position: absolute; }
 .mrow { left: 0; right: 0; }
 .mcol { top: 0; bottom: 0; }
 .scroll-x { overflow-x: auto; }
@@ -15,6 +15,10 @@ body
 // .footer.row { height: 50px; bottom: 0; }
 // .left.col { width: 250px; }
 // .right.col { left: 250px; right: 0; }
+
+.playlist
+  max-height 300px
+  overflow auto
 
 .glyphicon
   top 2px

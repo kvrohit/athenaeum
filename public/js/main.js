@@ -14,12 +14,12 @@ require(
     $(function() {
       var router = new Router();
 
-      $('ul.nav li a').on('click', function() {
+      $('#routes a').on('click', function() {
         $('ul.nav li').removeClass('active');
         $(this).parent().toggleClass('active');
       });
 
-      $('ul.nav li a').on('click', function(e) {
+      $('#routes a').on('click', function(e) {
         e.preventDefault();
         var href = $(this).attr('href');
         router.navigate(href, { trigger: true });

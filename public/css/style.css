@@ -5,7 +5,7 @@ body {
 /* Generic pane styles */
 .mrow,
 .mcol {
-  overflow: hidden;
+/*overflow: hidden;*/
   position: absolute;
 }
 .mrow {
@@ -30,6 +30,10 @@ body {
 .body.mrow {
   top: 50px;
   bottom: 0;
+}
+.playlist {
+  max-height: 300px;
+  overflow: auto;
 }
 .glyphicon {
   top: 2px;
