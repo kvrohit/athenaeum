@@ -1,15 +1,16 @@
 define(
-  ['underscore', 'backbone'],
-  function(_, Backbone) {
+  ['underscore', 'backbone', 'collections/tracks'],
+  function(_, Backbone, Tracks) {
     var Album = Backbone.Model.extend({
       urlRoot: '/albums',
 
-      trackUrlAtIndex: function(index) {
-        return this.get('tracks')[index].uri;
+      initialize: function() {
+        this.tracks = new Tracks();
+        this.tracks.url = this.urlRoot + '/' + this.id + '/tracks';
       },
 
       trackAtIndex: function(index) {
-        return this.get('tracks')[index];
+        return this.tracks.at(index);
       }
 
     });

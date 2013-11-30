@@ -1,6 +1,6 @@
 define(
-  ['jquery', 'underscore', 'backbone', 'text!templates/albumdetail.html', 'models/track'],
-  function($, _, Backbone, AlbumDetailTemplate, Track) {
+  ['jquery', 'underscore', 'backbone', 'text!templates/albumdetail.html', 'models/track', 'views/tracks'],
+  function($, _, Backbone, AlbumDetailTemplate, Track, TracksView) {
     var AlbumDetail = Backbone.View.extend({
       // className: 'mosaic-block',
       template: Handlebars.compile(AlbumDetailTemplate),
@@ -13,15 +13,17 @@ define(
       open: function(evt) {
         evt.preventDefault();
         var trackIndex = $(evt.target).data('track-index');
-        var trackUrl   = this.model.trackUrlAtIndex(trackIndex);
-        console.log(trackUrl);
-
-        window.Player.queueTrack(new Track(this.model.trackAtIndex(trackIndex)));
+        window.Player.queueTrack(this.model.trackAtIndex(trackIndex));
       },
 
       render: function() {
         var content = this.template(this.model.toJSON());
+        var tracksView = new TracksView({ collection: this.model.tracks });
         this.$el.html(content);
+
+        this.$('#tracklist').html(tracksView.render().el);
+        this.model.tracks.fetch();
+
         return this;
       }
     });

@@ -34,7 +34,14 @@ exports.albums = function(req, res) {
     for (var j = 0; j < tracks.length; j += 1) {
       var trackObj = {};
       trackObj.uri = '/' + albums[i] + '/' + tracks[j];
-      trackObj.title = tracks[j];
+
+      var trackDetails = tracks[j].split(' - ');
+      trackObj.trackNo = parseInt(trackDetails[0], 10);
+      trackObj.index   = trackObj.trackNo - 1;
+      trackObj.artist  = trackDetails[1];
+      trackObj.title   = trackDetails[2].split('.mp3')[0];
+      trackObj.album   = albumObj.title.split(' - ')[1];
+
       trackList.push(trackObj);
     }
 
@@ -50,7 +57,13 @@ exports.onealbum = function(req, res) {
   var id = parseInt(req.params.id);
 
   res.json(app.get('allTracks')[id]);
-}
+};
+
+exports.tracks = function(req, res) {
+  var id = parseInt(req.params.id);
+
+  res.json(app.get('allTracks')[id].tracks);
+};
 
 
 /*

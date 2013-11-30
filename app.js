@@ -35,6 +35,7 @@ app.get('/movies'    , routes.movies);
 app.get('/tvshows'   , routes.tvshows);
 app.get('/albums'    , routes.albums);
 app.get('/albums/:id', routes.onealbum);
+app.get('/albums/:id/tracks', routes.tracks);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

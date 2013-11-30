@@ -1,8 +1,8 @@
 define(
-  ['jquery', 'underscore', 'backbone', 'text!templates/track.html'],
+  ['jquery', 'underscore', 'backbone', 'text!templates/playlisttrack.html'],
   function($, _, Backbone, TrackTemplate) {
     var TrackView = Backbone.View.extend({
-      tagName: 'tr',
+      tagName: 'li',
       template: Handlebars.compile(TrackTemplate),
 
       render: function() {
