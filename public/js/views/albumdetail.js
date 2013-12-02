@@ -6,11 +6,19 @@ define(
       template: Handlebars.compile(AlbumDetailTemplate),
 
       events: {
-        "click a": "open",
-        "click i": "open"
+        "click a": "queueTrack",
+        "click i": "queueTrack",
+        "click #addAll": "queueAllTracks"
       },
 
-      open: function(evt) {
+      queueAllTracks: function(evt) {
+        evt.preventDefault();
+        this.model.tracks.forEach(function(track) {
+          window.Player.queueTrack(track);
+        });
+      },
+
+      queueTrack: function(evt) {
         evt.preventDefault();
         var trackIndex = $(evt.target).data('track-index');
         window.Player.queueTrack(this.model.trackAtIndex(trackIndex));

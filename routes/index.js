@@ -18,6 +18,12 @@ exports.tvshows = function(req, res) {
 };
 
 exports.albums = function(req, res) {
+
+  if (app.get('allTracks')) {
+    res.json(app.get('allTracks'));
+    return;
+  }
+
   var albums = fs.readdirSync('/home/rohit/Music');
   var allTracks = [];
 

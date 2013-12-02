@@ -94,10 +94,12 @@ define(
       },
 
       queueTrack: function(track) {
-        this.playlist.add(track);
+        if (track) {
+          this.playlist.add(track);
 
-        if (this.get('currentIndex') === -1) {
-          this.next();
+          if (this.get('currentIndex') === -1) {
+            this.next();
+          }
         }
       }
 
