@@ -64,6 +64,12 @@ define(
         }
 
         this.set({currentIndex: curIndex});
+
+        if ((curIndex - 1) !== -1) {
+          this.playlist.at(curIndex - 1).set({"highlighted": false});
+        }
+
+        this.playlist.at(curIndex).set({"highlighted": true});
         this.src(this.playlist.at(curIndex).get('uri'));
       },
 
@@ -80,7 +86,12 @@ define(
           return;
         }
 
+        if ((curIndex + 1) !== this.playlist.length) {
+          this.playlist.at(curIndex + 1).set({"highlighted": false});
+        }
+
         this.set({currentIndex: curIndex});
+        this.playlist.at(curIndex).set({"highlighted": true});
         this.src(this.playlist.at(curIndex).get('uri'));
       },
 

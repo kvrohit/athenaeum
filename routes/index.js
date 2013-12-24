@@ -47,6 +47,7 @@ exports.albums = function(req, res) {
       trackObj.artist  = trackDetails[1];
       trackObj.title   = trackDetails[2].split('.mp3')[0];
       trackObj.album   = albumObj.title.split(' - ')[1];
+      trackObj.id      = trackObj.album.replace(/\s/g, '-') + '-' + trackObj.trackNo;
 
       trackList.push(trackObj);
     }

@@ -15,6 +15,7 @@ define(
       },
 
       renderItems: function(items) {
+        console.log(items);
         items.forEach(function(model) {
           var itemView = new ItemView({ model: model });
           $('#maincontent').append(itemView.render().el);
