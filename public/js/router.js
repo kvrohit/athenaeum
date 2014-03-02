@@ -40,6 +40,8 @@ define(
         });
 
         window.Player = new Player();
+        window.localStorage.clear();
+        window.localStorage.setItem('hl', JSON.stringify({id: ''}));
 
         var playerView = new PlayerView({ model: window.Player });
         var seekbar = new Seekbar({ model: window.Player });

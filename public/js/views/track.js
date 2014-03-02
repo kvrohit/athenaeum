@@ -11,7 +11,7 @@ define(
       },
 
       highlight: function() {
-        var hl = this.model.get("highlighted");
+        var hl = this.model.get('highlighted');
 
         if (hl) {
           this.$el.addClass('track-highlight');
@@ -24,10 +24,13 @@ define(
         var content = this.template(this.model.toJSON());
         this.$el.html(content);
 
-        // Highlight the current playing track
-        if (this.model.get("highlighted") === true) {
-          this.$el.addClass('track-highlight');
+        var id = JSON.parse(window.localStorage.getItem('hl')).id;
+        if (this.model.get('id') === id) {
+          this.model.set({'highlighted': true});
+        } else {
+          this.model.set({'highlighted': false});
         }
+        
         return this;
       }
     });

@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "athenaeum",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,3 +11,4 @@
     "stylus": "*"
   }
 }
+

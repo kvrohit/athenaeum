@@ -70,6 +70,7 @@ define(
         }
 
         this.playlist.at(curIndex).set({"highlighted": true});
+        window.localStorage.setItem('hl', JSON.stringify({id: this.playlist.at(curIndex).get('id')}));
         this.src(this.playlist.at(curIndex).get('uri'));
       },
 
@@ -92,6 +93,7 @@ define(
 
         this.set({currentIndex: curIndex});
         this.playlist.at(curIndex).set({"highlighted": true});
+        window.localStorage.setItem('hl', JSON.stringify({id: this.playlist.at(curIndex).get('id')}));
         this.src(this.playlist.at(curIndex).get('uri'));
       },
 
